@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/jquery-1.12.1.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controller/EventController.js"></script>
+    <script src="js/controller/EditEventController.js"></script>
+    <script src="js/controller/EditProfileController.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/services/EventData.js"></script>
+    <script src="js/services/GravatarUrlBuilder.js"></script>
+    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/icons.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <style>
+        input.ng-invalid.ng-dirty{background-color: pink}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+
+            </ul>
+        </div>
+    </div>
+    <div ng-controller="EditProfileController">
+        <div class="container">
+            <form name="profileForm">
+                <div class="row-fluid">
+                    <div class="span3">
+                        <img ng-src={{getGravatarUrl(user.email)}}>
+                    </div>
+                </div>
+                <hr>
+                <filedset>
+                    <label for="useruserName">Username:</label>
+                    <input type="text" id="useruserName" required ng-model="user.userName" class="form-control"
+                           placeholder="Enter user name..."/>
+                    <label for="userPassword">Password :</label>
+                    <input type="password" id="userPassword" ng-model="user.password" class="form-control"
+                           required placeholder="Enter your password..."/>
+                    <label for="userName">Name:</label>
+                    <input type="text" id="userName" required ng-model="user.name" class="form-control"
+                           placeholder="Enter your name..."/>
+                    <label for="userEmail">Email : </label>
+                    <input type="text" id="userEmail" ng-model="user.email" class="form-control"
+                           placeholder="Enter email name..."/>
+                    <label for="userBio">Bio : </label>
+                    <textarea id="userBio" ng-model="user.bio" class="form-control"
+                               placeholder="Enter email name..."></textarea>
+                    <br>
+                    <br>
+                    <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" ng-click="saveEvent(event,form)">Save</button>
+                    <button type="button" class="btn btn-default" ng-click="cancelEdit()">Cancel</button>
+                </filedset>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
